@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Basic AJAX Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main">
+        <h2>Get The Latest Content:</h2>
+        <div class='content' id="content">
+        <!-- here is where ajax will send content -->
+            <input type="button" class="button" value="Get Content" id="btn_content" onclick="getContent();" />
+        </div>
+        <script type="text/javascript">
+            //step 1
+            var myAjax = new XMLHttpRequest();
+
+            //step 2
+            myAjax.open('GET', 'content.html');
+//step 3 define callback;  Defined here, but not activated until send();
+myAjax.onreadystatechange = function() { //each time readystate changes, check if it is at state 4.
+    console.log("readystate" + myAjax.readyState);
+    if (myAjax.readyState == 4){
+        document.getElementById('content').innerHTML = myAjax.responseText;
+    }
+}
+//STEP 4
+function getContent(){
+    myAjax.send();
+    document.getElementById('btn_content').style.display = 'none'; //hid button
+}
+
+        </script>
+</body>
+
+</html>

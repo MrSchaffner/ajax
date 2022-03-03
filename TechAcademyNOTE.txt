@@ -1,0 +1,5 @@
+Tech Academy Project Files:
+(not included with Xampp)
+content.html
+style.css
+ajax_basic.html
